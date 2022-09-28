@@ -26,12 +26,12 @@ if (isset($_GET["ploeg"]) && trim($_GET["ploeg"]) !== "") { // Unieke Ploegen
 
     echo "<!-- $ploeg -->";
 
-    $wedstrijd_result = mysqli_query($link, "SELECT * FROM wedstrijden WHERE `TeamA` = '".$ploeg."' OR `TeamB` = '".$ploeg."' ORDER BY `DatumWedstrijd` ASC, `Uur` ASC");
+    $wedstrijd_result = mysqli_query($link, "SELECT * FROM wedstrijden WHERE (`TeamA` = '".$ploeg."' OR `TeamB` = '".$ploeg."') AND `DatumWedstrijd` >= NOW() ORDER BY `DatumWedstrijd` ASC, `Uur` ASC");
     $wedstijd_data_per_ploeg = mysqli_fetch_all($wedstrijd_result);
 } else { // Alle Ploegen
     foreach ($ploegen as $ploeg) {
         echo "<!-- $ploeg -->";
-        $wedstrijd_result = mysqli_query($link, "SELECT * FROM wedstrijden WHERE `TeamA` = '".$ploeg."' OR `TeamB` = '".$ploeg."' ORDER BY `DatumWedstrijd` ASC, `Uur` ASC LIMIT 1 ");
+        $wedstrijd_result = mysqli_query($link, "SELECT * FROM wedstrijden WHERE (`TeamA` = '".$ploeg."' OR `TeamB` = '".$ploeg."') AND `DatumWedstrijd` >= NOW() ORDER BY `DatumWedstrijd` ASC, `Uur` ASC LIMIT 1 ");
         $wedstrijd = mysqli_fetch_assoc($wedstrijd_result);
 
         array_push($wedstijd_data_per_ploeg, $wedstrijd);
