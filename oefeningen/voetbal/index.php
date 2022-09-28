@@ -11,5 +11,6 @@
     <h1><a href="./overzicht_inschrijvingen">Overzicht</a></h1>
     <h1><a href="./verwijder_inschrijvingen">Verwijder Inschrijving</a></h1>
     <h1><a href="./prijs_aanpassen">Prijs aanpassen</a></h1>
+    <h1><a href="./wedstrijden">Wedstrijden</a></h1>
 </body>
 </html>
